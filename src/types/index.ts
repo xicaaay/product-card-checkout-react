@@ -36,3 +36,6 @@ export type DeclineReason = "card_declined";
 export type PaymentResult =
   | { status: "approved"; orderId: string; last4: string }
   | { status: "declined"; reason: DeclineReason };
+
+// The approved variant on its own, for code that only handles a success.
+export type ApprovedPayment = Extract<PaymentResult, { status: "approved" }>;
