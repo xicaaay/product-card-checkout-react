@@ -15,7 +15,6 @@
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--color-error);
   border-radius: var(--radius-sm);
-  background: var(--color-error-soft);
   color: var(--color-error);
   font-weight: 500;
 }
@@ -35,7 +34,7 @@
 /* Secondary look for "Cancelar". */
 .secondary {
   --btn-bg: var(--color-surface);
-  --btn-bg-hover: var(--color-accent-soft);
+  --btn-bg-hover: var(--color-bg);
   --btn-color: var(--color-text);
   --btn-border: var(--color-border);
 }

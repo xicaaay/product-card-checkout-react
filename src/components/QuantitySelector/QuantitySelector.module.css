@@ -7,7 +7,7 @@
 /* Secondary look for the +/- buttons, set through the shared --btn-* variables. */
 .button {
   --btn-bg: var(--color-surface);
-  --btn-bg-hover: var(--color-accent-soft);
+  --btn-bg-hover: var(--color-bg);
   --btn-color: var(--color-text);
   --btn-border: var(--color-border);
 

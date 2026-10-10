@@ -1,20 +1,17 @@
 /* Design tokens: every color, spacing and radius used by the components lives
-   here, so a visual change is made in one place. */
+   here, so a visual change is made in one place. Kept to the minimum: two
+   neutrals for backgrounds (page and surface), text/muted/border for the rest,
+   one accent, and error/success. */
 :root {
-  --color-bg: #f4f6fa;
-  --color-surface: #ffffff;
+  --color-bg: #f4f6fa; /* page background, and the light tint for highlights */
+  --color-surface: #ffffff; /* cards, inputs and text on the accent color */
   --color-text: #1f2a44;
   --color-muted: #5b6577;
   --color-border: #c9d1de;
   --color-accent: #1d4ed8;
   --color-accent-hover: #1e40af;
-  --color-accent-soft: #e8eefc;
   --color-error: #b42318;
-  --color-error-soft: #fef3f2;
   --color-success: #067647;
-  --color-success-soft: #ecfdf3;
-  --color-disabled-bg: #e3e7ef;
-  --color-disabled-text: #6b7486;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -72,7 +69,7 @@ button {
   border: 1px solid var(--btn-border, transparent);
   border-radius: var(--radius-sm);
   background: var(--btn-bg, var(--color-accent));
-  color: var(--btn-color, #ffffff);
+  color: var(--btn-color, var(--color-surface));
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -84,8 +81,8 @@ button:hover:not(:disabled) {
 
 button:disabled {
   border-color: transparent;
-  background: var(--color-disabled-bg);
-  color: var(--color-disabled-text);
+  background: var(--color-border);
+  color: var(--color-muted);
   cursor: not-allowed;
 }
 

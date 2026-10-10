@@ -31,5 +31,5 @@
   gap: var(--space-1);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-sm);
-  background: var(--color-accent-soft);
+  background: var(--color-bg);
 }
