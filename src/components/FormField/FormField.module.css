@@ -1,0 +1,32 @@
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* Input plus optional adornment (e.g. the card brand) on one row. */
+.control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.control input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Reserves one line for the error message (0.875rem font x 1.5 line height). */
+.errorSlot {
+  min-height: 1.3125rem;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  font-weight: 500;
+}

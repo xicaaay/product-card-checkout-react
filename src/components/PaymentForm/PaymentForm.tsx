@@ -12,6 +12,7 @@ import type {
 } from '../../types'
 import { CardBrandBadge } from '../CardBrandBadge/CardBrandBadge'
 import { FormField } from '../FormField/FormField'
+import styles from './PaymentForm.module.css'
 
 type PaymentFormProps = {
   // Only the approved result goes up: it carries the order id and the last 4
@@ -120,7 +121,7 @@ export function PaymentForm({ onSuccess, onCancel, pay = processPayment }: Payme
   })
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Datos de pago">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate aria-label="Datos de pago">
       <FormField
         id="payment-name"
         label="Nombre del titular"
@@ -138,22 +139,24 @@ export function PaymentForm({ onSuccess, onCancel, pay = processPayment }: Payme
         {...fieldProps('cardNumber')}
       />
 
-      <FormField
-        id="payment-expiry"
-        label="Vencimiento (MM/AA)"
-        placeholder="MM/AA"
-        inputMode="numeric"
-        autoComplete="cc-exp"
-        {...fieldProps('expiry')}
-      />
+      <div className={styles.row}>
+        <FormField
+          id="payment-expiry"
+          label="Vencimiento (MM/AA)"
+          placeholder="MM/AA"
+          inputMode="numeric"
+          autoComplete="cc-exp"
+          {...fieldProps('expiry')}
+        />
 
-      <FormField
-        id="payment-cvv"
-        label="CVV"
-        inputMode="numeric"
-        autoComplete="cc-csc"
-        {...fieldProps('cvv')}
-      />
+        <FormField
+          id="payment-cvv"
+          label="CVV"
+          inputMode="numeric"
+          autoComplete="cc-csc"
+          {...fieldProps('cvv')}
+        />
+      </div>
 
       <FormField
         id="payment-email"
@@ -164,18 +167,29 @@ export function PaymentForm({ onSuccess, onCancel, pay = processPayment }: Payme
       />
 
       {status === 'declined' && (
-        <p role="alert">El pago fue rechazado. Revisa los datos o prueba con otra tarjeta.</p>
+        <p className={styles.alert} role="alert">
+          El pago fue rechazado. Revisa los datos o prueba con otra tarjeta.
+        </p>
       )}
       {status === 'error' && (
-        <p role="alert">No se pudo procesar el pago. Inténtalo de nuevo.</p>
+        <p className={styles.alert} role="alert">
+          No se pudo procesar el pago. Inténtalo de nuevo.
+        </p>
       )}
 
-      <button type="submit" disabled={isProcessing}>
-        {isProcessing ? 'Procesando…' : 'Pagar'}
-      </button>
-      <button type="button" onClick={onCancel} disabled={isProcessing}>
-        Cancelar
-      </button>
+      <div className={styles.actions}>
+        <button type="submit" disabled={isProcessing}>
+          {isProcessing ? 'Procesando…' : 'Pagar'}
+        </button>
+        <button
+          className={styles.secondary}
+          type="button"
+          onClick={onCancel}
+          disabled={isProcessing}
+        >
+          Cancelar
+        </button>
+      </div>
     </form>
   )
 }

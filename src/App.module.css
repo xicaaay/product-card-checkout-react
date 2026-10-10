@@ -1,0 +1,35 @@
+.app {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-6);
+}
+
+.title {
+  margin-bottom: var(--space-5);
+  font-size: 1.25rem;
+  color: var(--color-muted);
+}
+
+/* Surface for the payment screen. */
+.panel {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 520px;
+  margin: 0 auto;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.panelTitle {
+  font-size: 1.5rem;
+}
+
+.summary {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+}

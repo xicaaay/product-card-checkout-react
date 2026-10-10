@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import styles from './App.module.css'
 import { PaymentForm } from './components/PaymentForm/PaymentForm'
 import { ProductCard } from './components/ProductCard/ProductCard'
 import { SuccessScreen } from './components/SuccessScreen/SuccessScreen'
@@ -29,8 +29,8 @@ function App() {
   }
 
   return (
-    <main>
-      <h1>Checkout</h1>
+    <main className={styles.app}>
+      <h1 className={styles.title}>Checkout</h1>
 
       {screen.name === 'browsing' && (
         <ProductCard
@@ -40,15 +40,19 @@ function App() {
       )}
 
       {screen.name === 'paying' && (
-        <section aria-labelledby="payment-title">
-          <h2 id="payment-title">Pago</h2>
-          <p>
-            {screen.quantity} × {product.title}
-          </p>
-          <p>
-            Total a pagar:{' '}
-            <strong>{formatCents(product.unitPriceCents * screen.quantity)}</strong>
-          </p>
+        <section className={styles.panel} aria-labelledby="payment-title">
+          <h2 className={styles.panelTitle} id="payment-title">
+            Pago
+          </h2>
+          <div className={styles.summary}>
+            <p>
+              {screen.quantity} × {product.title}
+            </p>
+            <p>
+              Total a pagar:{' '}
+              <strong>{formatCents(product.unitPriceCents * screen.quantity)}</strong>
+            </p>
+          </div>
           <PaymentForm
             onSuccess={(payment) => handleApproved(payment, screen.quantity)}
             onCancel={() => setScreen({ name: 'browsing' })}

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { formatCents } from '../../lib/format'
 import type { Product } from '../../types'
 import { QuantitySelector } from '../QuantitySelector/QuantitySelector'
+import styles from './ProductCard.module.css'
 
 type ProductCardProps = {
   product: Product
@@ -25,27 +26,39 @@ export function ProductCard({ product, onBuy }: ProductCardProps) {
   const titleId = `product-${product.id}-title`
 
   return (
-    <article aria-labelledby={titleId}>
-      <img src={product.imageUrl} alt={product.title} />
-      <h2 id={titleId}>{product.title}</h2>
-      <p>{product.description}</p>
-      <p>Precio unitario: {formatCents(product.unitPriceCents)}</p>
-      <p>{isSoldOut ? 'Agotado' : `Stock disponible: ${product.stock}`}</p>
+    <article className={styles.card} aria-labelledby={titleId}>
+      <img className={styles.image} src={product.imageUrl} alt={product.title} />
 
-      <QuantitySelector
-        value={quantity}
-        max={product.stock}
-        onChange={setSelectedQuantity}
-        disabled={isSoldOut}
-      />
+      <div className={styles.details}>
+        <h2 className={styles.title} id={titleId}>
+          {product.title}
+        </h2>
+        <p className={styles.description}>{product.description}</p>
+        <p className={styles.price}>Precio unitario: {formatCents(product.unitPriceCents)}</p>
+        <p className={isSoldOut ? styles.soldOut : styles.stock}>
+          {isSoldOut ? 'Agotado' : `Stock disponible: ${product.stock}`}
+        </p>
 
-      <p aria-live="polite">
-        Total: <strong>{formatCents(totalCents)}</strong>
-      </p>
+        <QuantitySelector
+          value={quantity}
+          max={product.stock}
+          onChange={setSelectedQuantity}
+          disabled={isSoldOut}
+        />
 
-      <button type="button" disabled={isSoldOut} onClick={() => onBuy(quantity)}>
-        Comprar
-      </button>
+        <p className={styles.total} aria-live="polite">
+          Total: <strong>{formatCents(totalCents)}</strong>
+        </p>
+
+        <button
+          className={styles.buy}
+          type="button"
+          disabled={isSoldOut}
+          onClick={() => onBuy(quantity)}
+        >
+          Comprar
+        </button>
+      </div>
     </article>
   )
 }

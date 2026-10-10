@@ -1,3 +1,5 @@
+import styles from './QuantitySelector.module.css'
+
 type QuantitySelectorProps = {
   value: number
   max: number
@@ -17,8 +19,9 @@ export function QuantitySelector({
   disabled = false,
 }: QuantitySelectorProps) {
   return (
-    <div role="group" aria-label="Cantidad">
+    <div className={styles.group} role="group" aria-label="Cantidad">
       <button
+        className={styles.button}
         type="button"
         aria-label="Disminuir cantidad"
         onClick={() => onChange(value - 1)}
@@ -27,8 +30,11 @@ export function QuantitySelector({
         −
       </button>
       {/* <output> is a live region, so screen readers announce changes. */}
-      <output aria-label="Cantidad seleccionada">{value}</output>
+      <output className={styles.value} aria-label="Cantidad seleccionada">
+        {value}
+      </output>
       <button
+        className={styles.button}
         type="button"
         aria-label="Aumentar cantidad"
         onClick={() => onChange(value + 1)}

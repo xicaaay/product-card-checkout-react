@@ -1,4 +1,5 @@
 import type { CardBrand } from '../../types'
+import styles from './CardBrandBadge.module.css'
 
 const BRAND_LABELS: Record<Exclude<CardBrand, 'unknown'>, string> = {
   visa: 'Visa',
@@ -11,5 +12,5 @@ const BRAND_LABELS: Record<Exclude<CardBrand, 'unknown'>, string> = {
 export function CardBrandBadge({ brand }: { brand: CardBrand }) {
   if (brand === 'unknown') return null
 
-  return <span>{BRAND_LABELS[brand]}</span>
+  return <span className={styles.badge}>{BRAND_LABELS[brand]}</span>
 }

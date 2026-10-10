@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from 'react'
+import styles from './FormField.module.css'
 
 type FormFieldProps = Omit<
   ComponentProps<'input'>,
@@ -21,20 +22,29 @@ export function FormField({ id, label, error, adornment, ...inputProps }: FormFi
   const errorId = `${id}-error`
 
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      <input
-        {...inputProps}
-        id={id}
-        aria-invalid={error !== null}
-        aria-describedby={error !== null ? errorId : undefined}
-      />
-      {adornment}
-      {error !== null && (
-        <p id={errorId} role="alert">
-          {error}
-        </p>
-      )}
+    <div className={styles.field}>
+      <label className={styles.label} htmlFor={id}>
+        {label}
+      </label>
+      <div className={styles.control}>
+        <input
+          {...inputProps}
+          id={id}
+          aria-invalid={error !== null}
+          aria-describedby={error !== null ? errorId : undefined}
+        />
+        {adornment}
+      </div>
+      {/* The slot keeps its height when empty, so an error appearing on blur
+          does not shift the layout and swallow the click on the next button. */}
+      <div className={styles.errorSlot}>
+        {error !== null && (
+          <p className={styles.error} id={errorId} role="alert">
+            {error}
+          </p>
+        )}
+      </div>
+
     </div>
   )
 }

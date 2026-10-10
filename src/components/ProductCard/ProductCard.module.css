@@ -1,0 +1,68 @@
+/* Mobile first: image on top. From 640px, image on the left, details on the
+   right. */
+.card {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 640px) {
+  .card {
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+}
+
+/* The photo is vertical: cap its height and keep its proportions. */
+.image {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+}
+
+.details {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.description {
+  color: var(--color-muted);
+}
+
+.price {
+  font-weight: 600;
+}
+
+.stock {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+
+.soldOut {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+.total {
+  font-size: 1.25rem;
+}
+
+.buy {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .buy {
+    width: auto;
+    justify-self: start;
+    min-width: 160px;
+  }
+}
