@@ -13,6 +13,21 @@ export type Product = {
 // 'unknown' covers empty input or numbers that match no rule.
 export type CardBrand = "visa" | "mastercard" | "amex" | "unknown";
 
+// Raw values typed in the payment form. Security: this is the only place the
+// full card number and CVV exist, and it must be discarded after the payment.
+export type PaymentFormValues = {
+  name: string;
+  cardNumber: string;
+  expiry: string;
+  cvv: string;
+  email: string;
+};
+
+export type PaymentFormField = keyof PaymentFormValues;
+
+// One entry per field: an error message, or null when the field is valid.
+export type PaymentFormErrors = Record<PaymentFormField, string | null>;
+
 // Why a payment was declined. A closed set is easier to test than free text.
 export type DeclineReason = "card_declined";
 
