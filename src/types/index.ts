@@ -11,7 +11,7 @@ export type Product = {
 
 // Card brand detected while the user types.
 // 'unknown' covers empty input or numbers that match no rule.
-export type CardType = "visa" | "mastercard" | "amex";
+export type CardBrand = "visa" | "mastercard" | "amex" | "unknown";
 
 // Why a payment was declined. A closed set is easier to test than free text.
 export type DeclineReason = "card_declined";
