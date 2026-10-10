@@ -122,7 +122,7 @@ Se elige con botones **−** y **+**, sin campo de texto. Los botones se deshabi
 
 ## Seguridad
 
-Es un requisito explícito por ser una fintech.
+Es un requisito explícito.
 
 - **El número completo y el CVV viven solo en el estado de `PaymentForm`.** No se guardan en `localStorage`, `sessionStorage`, la URL ni los logs, y no hay ningún `console.log` de datos.
 - **Hacia arriba solo sube el resultado del pago**: `ApprovedPayment` contiene únicamente el número de orden y los **últimos 4 dígitos**. El tipo no tiene ningún campo para el número completo ni el CVV, así que ni la pantalla de éxito ni `App` podrían mostrarlos o guardarlos por accidente.
