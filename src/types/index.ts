@@ -2,10 +2,10 @@ export type Product = {
   id: number;
   title: string;
   description: string;
-  // Orice in integar cents (example: 1250 = 12.50), to avoid floating-point
+  // Price in integer cents (example: 1250 = 12.50), to avoid floating-point
   // rounding errors. Format to currency only when displaying.
   unitPriceCents: number;
-  stock: number; // Units available. Caps the quantity selector and decreases on approbal.
+  stock: number; // Units available. Caps the quantity selector and decreases on approval.
   imageUrl: string;
 };
 
