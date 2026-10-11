@@ -50,7 +50,7 @@ export function validateCardNumber(value: string): string | null {
   if (digits.length === 0) return 'Ingresa el número de tarjeta'
 
   if (digits.length < MIN_CARD_LENGTH || digits.length > MAX_CARD_LENGTH) {
-    return 'El número debe tener entre 13 y 19 dígitos'
+    return `El número debe tener entre ${MIN_CARD_LENGTH} y ${MAX_CARD_LENGTH} dígitos`
   }
 
   if (!isValidLuhn(digits)) return 'El número de tarjeta no es válido'
